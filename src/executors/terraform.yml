@@ -1,0 +1,8 @@
+parameters:
+  version:
+    description: "Terraform docker version tag"
+    type: string
+    default: latest
+docker:
+  - image: hashicorp/terraform:<< parameters.version >>
+    entrypoint: /bin/sh

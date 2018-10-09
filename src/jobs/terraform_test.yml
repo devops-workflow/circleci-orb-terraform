@@ -1,0 +1,14 @@
+parameters:
+  version:
+    description: Terraform version
+    default: latest
+    type: string
+executor:
+  name: terraform
+  version: << parameters.version >>
+steps:
+  - checkout
+  - terraform_validate
+  - terraform_fmt
+  - tflint_install
+  - tflint_run

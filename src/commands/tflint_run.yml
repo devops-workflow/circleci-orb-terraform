@@ -1,0 +1,12 @@
+description: "Run tflint"
+steps:
+  - run:
+      # Not supporting modules from registry ?? v0.5.4
+      # For now, must ignore in config file
+      name: "Check: tflint"
+      command: |
+          #echo "Initializing terraform..."
+          #terraform init -input=false
+          echo "Running tflint..."
+          /usr/local/tflint/bin/tflint --version
+          /usr/local/tflint/bin/tflint
