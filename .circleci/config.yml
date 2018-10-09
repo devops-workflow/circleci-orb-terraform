@@ -10,6 +10,7 @@ workflows:
           workspace-path: orb-packed/
           artifact-path: orb-packed/
       - orb-tools/publish-dev-orb:
+          context: circleci
           namespace: devops-workflow
           orb-name: terraform
           label: ${CIRCLE_BRANCH}
@@ -17,9 +18,10 @@ workflows:
           workspace-path: orb-packed/
           requires: [orb-tools/pack-and-validate-orb]
       - orb-tools/increment-orb:
-          orb-path: orb-packed/orb.yml
+          context: circleci
           namespace: devops-workflow
           orb-name: terraform
+          orb-path: orb-packed/orb.yml
           segment: "patch"
           workspace-path: orb-packed/
           release-token-variable: "$CIRCLECI_API_TOKEN"
